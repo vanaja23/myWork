@@ -1,0 +1,21 @@
+#!/bin/bash
+read file
+configuration=('start date' 'Splits are' 'Running against' 'Using database user' 'Running in mode' 'end date' 'database URI' 'Symbols to be fetched' 'successful API calls' 'errors while making API calls' 'Symbols that returned empty data' 'Symbols sucessfully saved')
+total=${#configuration[@]}
+if [ -a "$file" ]
+then 
+ 	for (( i=0; i<${total}; i++ )) 
+ 	do
+ 	echo $(grep "${configuration[i]}" $file)
+ 	done
+else
+	echo "file not exists"
+fi
+echo "=========================================================="
+echo "WARNINGS:"
+echo "$(grep --color=always WARN "$word" $file)";
+echo "========================================================="
+echo "ERRORS:"
+echo "$(grep --color=always ERROR "ERROR" $file)";
+echo "============================================================"
+
