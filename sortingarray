@@ -1,0 +1,19 @@
+#!/bin/bash
+declare sortarray=(5 3 10 8 1)
+var=${#sortarray[@]}
+for (( i = 0; i <= $var; i++ ))
+do
+for (( j = i + 1; j <= $var; j++ ))
+do
+if [[ ${sortarray[$i]} -gt ${sortarray[$j]} ]]
+ then
+var1=${sortarray[$i]}
+sortarray[$i]=${sortarray[$j]}
+sortarray[$j]=$var1 
+fi
+done
+done
+for (( i = 0; i <= $var; i++ ))
+do
+echo ${sortarray[$i]}
+done
