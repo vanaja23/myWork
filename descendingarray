@@ -1,0 +1,20 @@
+#!/bin/bash
+declare array=(2 5 8 6 1)
+al=${#array[@]}
+for (( i = 0; i <= $al; i++ ))
+do
+for (( j = i + 1; j <= $al; j++ ))
+do
+if [[ ${array[i]} -lt ${array[j]} ]]
+then
+var=${array[i]}
+array[i]=${array[j]}
+array[j]=$var
+fi
+done
+done
+echo "descending order"
+for (( i = 0; i <= $al; i++ ))
+do
+echo ${array[i]}
+done
